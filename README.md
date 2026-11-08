@@ -302,4 +302,3 @@ Ejemplos: `feat: formulario de registro de usuarios`, `fix: validación de email
 - Si agregas una dependencia al `pom.xml`, avísalo en el PR.
 - Si cambias una entidad, revisa que no rompas datos/tablas de los demás.
 - Respeta el `.editorconfig` (UTF-8, saltos de línea LF, 4 espacios).
-# porelgusto-web
