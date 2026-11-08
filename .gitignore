@@ -1,0 +1,29 @@
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Configuración local / secretos
+application-prod.properties
+*.env
+.env
+
+# Neovim / jdtls (los genera el IDE)
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated
+*.swp
+Session.vim
+
+# Otros IDEs
+.idea/
+*.iml
+.vscode/
+.sts4-cache/
+
+# Sistema
+.DS_Store
+Thumbs.db
