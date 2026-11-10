@@ -169,10 +169,8 @@ porelgusto-web/
     │   │       └── img/
     │   └── webapp/
     │       └── WEB-INF/jsp/                    # vistas JSP (no accesibles directamente por URL)
-    │           ├── fragments/header.jsp        # <head>, Bootstrap y barra de navegación
-    │           ├── fragments/footer.jsp        # pie de página y scripts
-    │           ├── error/404.jsp               # páginas de error (404.jsp, 500.jsp...)
-    │           └── index.jsp                   # página de inicio
+    │           ├── index.jsp                   # página de inicio
+    │           └── catalogo.jsp                # catálogo
     └── test/java/com/neksbyte/porelgustoweb/       # tests (misma estructura de paquetes)
 ```
 
@@ -195,21 +193,34 @@ Reglas:
    usando `EntityManager`/HQL.
 5. Inyección de dependencias **por constructor** (campos `private final`), nunca `@Autowired` en atributos.
 6. Si el Servlet devuelve `"productos/lista"`, se muestra `src/main/webapp/WEB-INF/jsp/productos/lista.jsp`.
-7. Las vistas nuevas incluyen la cabecera y el pie comunes:
+7. Cada vista es una página HTML completa en un solo JSP, con Bootstrap cargado directamente:
 
    ```jsp
    <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
-   <c:set var="titulo" value="Productos"/>  <%-- o pásalo desde el Servlet con model.addAttribute --%>
-   <%@ include file="/WEB-INF/jsp/fragments/header.jsp" %>
+   <!DOCTYPE html>
+   <html lang="es">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Productos | Por el Gusto</title>
+       <link rel="stylesheet" href="<c:url value='/webjars/bootstrap/css/bootstrap.min.css'/>">
+       <link rel="stylesheet" href="<c:url value='/css/styles.css'/>">
+   </head>
+   <body>
 
-   <!-- contenido de la página con clases de Bootstrap -->
-   <c:forEach items="${productos}" var="p">
-       <p><c:out value="${p.nombre}"/></p>
-   </c:forEach>
+       <!-- contenido de la página con clases de Bootstrap -->
+       <c:forEach items="${productos}" var="p">
+           <p><c:out value="${p.nombre}"/></p>
+       </c:forEach>
 
-   <%@ include file="/WEB-INF/jsp/fragments/footer.jsp" %>
+       <script src="<c:url value='/webjars/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+       <script src="<c:url value='/js/app.js'/>"></script>
+   </body>
+   </html>
    ```
+
+   Bootstrap se sirve desde el proyecto (WebJar), no desde un CDN: usa siempre las rutas `/webjars/bootstrap/...`.
 
    Usa siempre `<c:out>` (o `${...}` dentro de etiquetas JSTL) para mostrar datos del usuario y
    `<c:url>` para los enlaces. No escribas código Java (`<% ... %>`) en los JSP.
