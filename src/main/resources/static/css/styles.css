@@ -1,1 +1,24 @@
-/* Estilos propios. Primero intenta resolverlo con clases de Bootstrap. */
+.titulo{
+
+  color: rgb(206, 48, 166);
+  display: flex;
+}
+
+.pie_pagina{
+  color: rgb(192, 107, 185);
+  position: absolute;
+  margin: 20px;
+  margin-left: 5px;
+  margin-top: 5%;
+}
+
+.botones{
+
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-left: 100px;
+}
+.padresita{
+  display: flex;
+}
