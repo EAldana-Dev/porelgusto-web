@@ -1,24 +1,179 @@
-.titulo{
-
-  color: rgb(206, 48, 166);
-  display: flex;
+* {
+    font-family: "DM Sans", sans-serif;
+    box-sizing: border-box;
+}
+h1{
+    font-family: "Bebas Neue", sans-serif;
 }
 
-.pie_pagina{
-  color: rgb(192, 107, 185);
-  position: absolute;
-  margin: 20px;
-  margin-left: 5px;
-  margin-top: 5%;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-.botones{
+a{
 
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-left: 100px;
+    text-decoration: none;
 }
-.padresita{
-  display: flex;
+
+.container{
+
+    .anuncio_superior{
+        display: flex;
+        background-color: rgb(184, 45, 177);
+        align-items: center;
+        justify-content: center;
+        max-height: 2rem;
+        .envio_gratis{
+            text-align: center;
+        }
+    }
+
+    .barra_superior {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+
+
+        .inicio {
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+
+            .titulo {
+                color: rgb(184, 45, 177);
+                font-size: 2rem;
+                margin: 0%;
+                
+            }
+
+            .envio_de_flores {
+                color: rgb(214, 73, 191);
+                font-size: 1rem;
+                margin-left: 1.5rem;
+                margin-top: 0%;
+            }
+        }
+
+        .opciones{
+
+            margin-left: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            gap: 2rem;
+
+            .catalogo {
+                position: relative;
+                display: inline-block;
+
+                .opciones_catalogo {
+                    display: none;
+                    position: absolute;
+                    background-color: white;
+                    min-width: 10rem;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+
+                    a {
+                        display: block;
+                        padding: 0.7rem;
+                        color: black;
+                        text-decoration: none;
+
+                        &:hover {
+                            background-color: #f0d5ed;
+                        }
+                    }
+                }
+
+                &:hover .opciones_catalogo {
+                    display: block;
+                }
+            }
+        }
+
+
+        .busqueda {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2rem;
+            margin-right: 2rem;
+            gap: 1rem;
+
+            .barra_busqueda {
+                flex: 1;
+                padding: 0.8rem 1.2rem;
+
+                border: 2px solid transparent;
+                border-radius: 2rem;
+                outline: none;
+
+                background-color: #f5f5f5;
+                color: #333;
+
+                font-size: 1rem;
+
+                transition: 0.3s;
+
+                &:focus {
+                    border-color: rgb(184, 45, 177);
+                    background-color: white;
+                    box-shadow: 0 0 0 3px rgba(184, 45, 177, 0.15);
+                }
+            }
+        
+            .btn_busqueda{
+                padding-left: 1rem;
+                padding-right: 1rem;
+
+                padding-top: .5rem;
+                padding-bottom: .5rem;
+                border: none;
+                border-radius: 2rem;
+
+                background-color: rgb(184, 45, 177);
+                color: white;
+
+                font-size: 1rem;
+                cursor: pointer;
+
+                transition: 0.3s;
+
+                &:hover {
+                    background-color: rgb(145, 30, 140);
+                    transform: scale(1.04);
+                }
+            }
+        }
+
+
+        .perfil {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            
+
+            .carrito {
+                width: 2.5rem;
+                height: 2.5rem;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+
+            .foto_de_perfil {
+                width: 3rem;
+                height: 3rem;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+        }
+    }
 }
