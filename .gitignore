@@ -27,3 +27,6 @@ Session.vim
 # Sistema
 .DS_Store
 Thumbs.db
+
+# OpenWiki local de este repositorio
+/openwiki/
