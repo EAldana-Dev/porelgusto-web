@@ -1,9 +1,26 @@
+@font-face {
+    font-family: "Cormorant Garamond";
+    src: url("/fuentesporelgusto/texto/CormorantGaramond-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Cormorant Garamond";
+    src: url("/fuentesporelgusto/titulos/CormorantGaramond-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+
 * {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
     box-sizing: border-box;
 }
 h1{
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 600;
 }
 
 body {
