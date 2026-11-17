@@ -1,8 +1,6 @@
 package com.neksbyte.porelgustoweb.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "ContenidoCarrito")
