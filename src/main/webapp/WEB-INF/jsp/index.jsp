@@ -37,12 +37,16 @@
                 </a>
 
                 <div class="catalogo">
-                    <a href="">Catálogo</a>
+                    <a href="">Catálogo ▲</a>
 
                     <div class="opciones_catalogo">
-                        <a href="">Pasen</a>
-                        <a href="">la lista</a>
-                        <a href="">d q vamos a vender</a>
+                        <a href="">Temporada</a>
+                        <a href="">Detalles</a>
+                        <a href="">Floreros</a>
+                        <a href="">Ramos</a>
+                        <a href="">Cajas</a>
+                        <a href="">Orquideas</a>
+                        <a href="">Extras</a>
                     </div>
                 </div>
 
