@@ -1,0 +1,44 @@
+
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Por el Gusto</title>
+
+    <link rel="stylesheet" href="<c:url value='/css/login.css'/>">
+</head>
+
+<body>
+    <div class="container">
+        <div class="cuadrado">
+    <h1 class="Inicio">Inicio de sesión</h1>
+
+    <form action="/login" method="POST" class="formulario">
+
+        <input type="text" name="usuario" placeholder="Usuario" class="usuario">
+
+        <input type="password" name="contraseña" placeholder="Contraseña" class="contraseña">
+
+        <a href="/Recuperar contraseña">
+            <p>¿Olvidaste tu contraseña?</p>
+        </a>
+        
+
+        <button type="submit" class="iniciar_sesion">
+            Iniciar sesión
+        </button>
+
+    </form>
+    <a href="/signup">
+    <p>Crear cuenta</p>
+    </a>
+    
+</div>
+    </div>
+</body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Por el Gusto</title>
 
-    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>">
+    <link rel="stylesheet" href="<c:url value='/css/home.css'/>">
 </head>
 
 <body>
@@ -67,8 +67,13 @@
             </form>
 
             <div class="perfil">
-                <img src="/imagenes/Carrito de compras.jpg" alt="Foto de perfil" class="carrito">
-                <img src="/imagenes/foto_de_perfil.jpg" alt="Foto de perfil" class="foto_de_perfil">
+                <a href="carrito">
+                    <img src="/imagenes/Carrito de compras.jpg" alt="Foto de perfil" class="carrito">
+                </a>
+                
+                <a href="/login">
+                    <img src="/imagenes/foto_de_perfil.jpg" alt="Foto de perfil" class="foto_de_perfil">
+                </a>
             </div>
 
         </div>
