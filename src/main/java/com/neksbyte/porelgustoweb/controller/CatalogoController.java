@@ -1,129 +1,49 @@
 package com.neksbyte.porelgustoweb.controller;
 
+import com.neksbyte.porelgustoweb.dao.ArregloFloralDao;
+import com.neksbyte.porelgustoweb.model.ArregloFloral;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Controller
 public class CatalogoController {
+    private final ArregloFloralDao dao;
+    public CatalogoController(ArregloFloralDao dao) {
+        this.dao = dao;
+    }
 
-    @GetMapping("/Arreglos")
+    @GetMapping("/Catalogo")
     public String inicio(Model model) {
 
     System.out.println("ENTRANDO AL CONTROLADOR");
+    List<ArregloFloral> arreglos = dao.findAll();
+        System.out.println("Cantidad: " + arreglos.size());
+
+        if (!arreglos.isEmpty()) {
+            System.out.println("Clase: " + arreglos.get(0).getClass().getName());
+            System.out.println("Nombre: " + arreglos.get(0).getNombre());
+        }
+    model.addAttribute("arreglo", arreglos);
 
     model.addAttribute("titulo", "Catalogo");
 
-    List<String> products = List.of(
-    "Laptop",
-    "Mouse",
-    "Keyboard",
-    "Monitor",
-    "Impresora",
-    "Escáner",
-    "Tablet",
-    "Smartphone",
-    "Auriculares",
-    "Altavoces",
-    "Micrófono",
-    "Webcam",
-    "Router",
-    "Switch de red",
-    "Hub USB",
-    "Disco duro externo",
-    "Memoria USB",
-    "Tarjeta SD",
-    "Tarjeta gráfica",
-    "Procesador",
-    "Memoria RAM",
-    "Placa base",
-    "Fuente de alimentación",
-    "Gabinete",
-    "Refrigeración líquida",
-    "Ventilador CPU",
-    "Pasta térmica",
-    "Cable HDMI",
-    "Cable USB-C",
-    "Cable Ethernet",
-    "Adaptador de corriente",
-    "Cargador inalámbrico",
-    "Power bank",
-    "Soporte para laptop",
-    "Base refrigerante",
-    "Alfombrilla para mouse",
-    "Reposamuñecas",
-    "Silla ergonómica",
-    "Escritorio ajustable",
-    "Lámpara LED de escritorio",
-    "Organizador de cables",
-    "Regleta eléctrica",
-    "UPS",
-    "Proyector",
-    "Pantalla de proyección",
-    "Televisor",
-    "Soundbar",
-    "Consola de videojuegos",
-    "Control de videojuegos",
-    "Volante de carreras",
-    "Joystick",
-    "Realidad virtual",
-    "Dron",
-    "Cámara digital",
-    "Cámara de acción",
-    "Trípode",
-    "Estabilizador",
-    "Tarjeta de captura",
-    "Mesa de mezclas",
-    "Interfaz de audio",
-    "Sintetizador MIDI",
-    "Teclado musical",
-    "Guitarra eléctrica",
-    "Amplificador",
-    "Pedal de efectos",
-    "Smartwatch",
-    "Pulsera de actividad",
-    "Báscula inteligente",
-    "Termómetro digital",
-    "Medidor de presión",
-    "Oxímetro",
-    "Bombilla inteligente",
-    "Enchufe inteligente",
-    "Cámara de seguridad",
-    "Sensor de movimiento",
-    "Timbre inteligente",
-    "Cerrojo inteligente",
-    "Robot aspirador",
-    "Aspiradora",
-    "Cafetera",
-    "Microondas",
-    "Freidora de aire",
-    "Licuadora",
-    "Batidora",
-    "Tostadora",
-    "Plancha",
-    "Ventilador",
-    "Purificador de aire",
-    "Humidificador",
-    "Calefactor",
-    "Aire acondicionado",
-    "Impresora 3D",
-    "Filamento PLA",
-    "Plotter de corte",
-    "Laminadora",
-    "Destructora de papel",
-    "Calculadora científica",
-    "Reloj de escritorio",
-    "Pizarra digital"
-);
-
-    System.out.println("PRODUCTOS: " + products);
-
-    model.addAttribute("products", products);
-
     return "catalogo";
-}
+    }
+    @GetMapping("/Catalogo/{nombre}")
+    public String detallesProducto(@PathVariable String nombre, Model model) {
 
+        String nombreReal = nombre.replace("-", " ");
+
+        ArregloFloral arreglo = dao.findByNombre(nombreReal)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        model.addAttribute("producto", arreglo);
+
+        return "detalleProducto";
+    }
 
 }

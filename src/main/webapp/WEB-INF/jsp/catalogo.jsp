@@ -15,7 +15,7 @@
 
     <div class="product-container">
 
-    <c:forEach var="product" items="${products}">
+    <c:forEach var="product" items="${arreglo}">
         <miLiberiaParaProducto:productCard product="${product}" />
     </c:forEach>
 

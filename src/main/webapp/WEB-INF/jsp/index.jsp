@@ -28,7 +28,7 @@
                             <ul class="navbar-nav ms-auto small text-uppercase">
                                 <li class="nav-item border-end"><a class="nav-link px-3" href="#">Inicio</a></li>
                                 <li class="nav-item border-end"><a class="nav-link px-3"
-                                        href="/Arreglos">Colecciones</a></li>
+                                        href="/Catalogo">Colecciones</a></li>
                                 <li class="nav-item border-end"><a class="nav-link px-3" href="#">Nosotros</a></li>
                                 <li class="nav-item"><a class="nav-link px-3" href="#">Contacto</a></li>
                             </ul>
