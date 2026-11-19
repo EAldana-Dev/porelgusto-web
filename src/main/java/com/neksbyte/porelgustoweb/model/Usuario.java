@@ -1,5 +1,6 @@
 package com.neksbyte.porelgustoweb.model;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 @Table(name = "Usuario")
 public class Usuario {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUsuario")
     private Integer idUsuario;
 
@@ -18,6 +20,7 @@ public class Usuario {
     private String direccion;
 
     @Column(name = "password", length = 255)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Column(name = "correoElectronico", length = 150)

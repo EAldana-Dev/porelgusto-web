@@ -6,7 +6,7 @@ CREATE TABLE TipoUsuario (
 );
 
 CREATE TABLE Usuario (
-  idUsuario INT PRIMARY KEY,
+  idUsuario INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   direccion VARCHAR(255),
   password VARCHAR(255),
