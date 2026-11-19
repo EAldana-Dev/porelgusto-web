@@ -139,6 +139,27 @@ rellenar los datos, añadir el driver de la base de datos al `pom.xml` y arranca
 
 ---
 
+## Autenticación
+
+- `POST /api/auth/registro`: recibe `nombre`, `direccion`, `correoElectronico`, `telefono` y `password` (mínimo 8 caracteres). Asigna el tipo de usuario configurado y devuelve un JWT.
+- `POST /api/auth/login`: recibe `correoElectronico` y `password`; la respuesta contiene `token`, `tokenType` (`Bearer`), `expiresIn` y un resumen del usuario.
+- Las contraseñas se almacenan con BCrypt. Configura `APP_AUTH_TOKEN_SECRET` con un secreto aleatorio de al menos 32 bytes antes de desplegar; el valor del perfil `dev` es solo para desarrollo.
+- `APP_AUTH_DEFAULT_USER_TYPE_ID` define el ID de `TipoUsuario` asignado al registrarse (por defecto `1`); asegúrate de que exista en la base de datos.
+
+Ejemplo de registro:
+
+```json
+{
+  "nombre": "Ana López",
+  "direccion": "Calle 1",
+  "correoElectronico": "ana@example.com",
+  "telefono": "5551234567",
+  "password": "una-clave-segura"
+}
+```
+
+El JWT se entrega al cliente para autenticación de sesión. Las rutas CRUD existentes aún no validan ese token.
+
 ## 3. Estructura del proyecto
 
 ```

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class HomeServlet {
+public class Home {
 
     @GetMapping("/")
     public String redirigirInicio() {
