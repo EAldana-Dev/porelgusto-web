@@ -15,6 +15,11 @@
 
 <body>
     <div class="container">
+        <div class="barra_superior">
+            <a href="carrito">
+                <img src="/imagenes/logo.png" alt="Foto de perfil" class="logo">
+            </a>
+        </div>
         <div class="cuadrado">
     <h1 class="Inicio">Inicio de sesión</h1>
 
