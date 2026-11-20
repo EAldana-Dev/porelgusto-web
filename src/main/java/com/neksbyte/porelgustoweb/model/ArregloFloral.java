@@ -40,7 +40,7 @@ public class ArregloFloral {
     @OneToMany(mappedBy = "arregloFloral")
     private List<ContenidoCarrito> contenidosCarrito = new ArrayList<>();
 
-    @OneToMany(mappedBy = "arregloFloral")
+    @OneToMany(mappedBy = "arregloFloral", fetch = FetchType.EAGER)
     private List<Imagen> imagenes = new ArrayList<>();
 
     @OneToMany(mappedBy = "arregloFloral")
