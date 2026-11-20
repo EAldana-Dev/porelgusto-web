@@ -19,14 +19,7 @@ public class CatalogoController {
     @GetMapping("/Catalogo")
     public String inicio(Model model) {
 
-    System.out.println("ENTRANDO AL CONTROLADOR");
     List<ArregloFloral> arreglos = dao.findAll();
-        System.out.println("Cantidad: " + arreglos.size());
-
-        if (!arreglos.isEmpty()) {
-            System.out.println("Clase: " + arreglos.get(0).getClass().getName());
-            System.out.println("Nombre: " + arreglos.get(0).getNombre());
-        }
     model.addAttribute("arreglo", arreglos);
 
     model.addAttribute("titulo", "Catalogo");
