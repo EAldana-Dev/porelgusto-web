@@ -166,6 +166,32 @@ a {
   margin-top: 0.4rem;
 }
 
+.pagina .main .anuncio{
+  background-color: #785b5b;
+  display: flex;
+  padding-left: 3rem;
+  flex-direction: column;
+  height: 20rem;
+  width: 100%;
+  justify-content: center;
+  gap: 1.5rem;
+  h1{
+    color: aliceblue;
+    margin: 0;
+  }
+  p{
+    color: aliceblue;
+    margin: 0;
+  }
+}
+
+.pagina .main .anuncio .comprar_ahora{
+  margin: 1rem;
+  border-radius: 1rem;
+  background-color: aqua;
+  width: 8rem;
+}
+
 @media screen and (max-width: 480px) {
   .pagina .barra_superior {
     position: relative;

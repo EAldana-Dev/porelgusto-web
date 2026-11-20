@@ -28,7 +28,9 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     aria-label="Abrir menú de navegación"
                     aria-expanded="false"
                     aria-controls="opciones"
-                >☰</button>
+                >
+                    ☰
+                </button>
                 <div class="opciones" id="opciones">
                     <a href="">Tendencias</a>
 
@@ -78,6 +80,14 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     </a>
                 </div>
             </nav>
+
+            <main class="main">
+                <div class="anuncio">
+                    <h1>Coleccion primavera</h1>
+                    <p>Hasta 20% de descuento</p>
+                    <button class="comprar_ahora">Comprar ahora</button>
+                </div>
+            </main>
         </div>
         <script src="<c:url value='/webjars/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     </body>
