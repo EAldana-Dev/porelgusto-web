@@ -23,11 +23,15 @@
         <div class="cuadrado">
     <h1 class="Inicio">Inicio de sesión</h1>
 
-    <form action="/login" method="POST" class="formulario">
+    <form action="<c:url value='/login'/>" method="POST" class="formulario">
 
-        <input type="text" name="usuario" placeholder="Usuario" class="usuario">
+        <input type="text" name="usuario" placeholder="Usuario" class="usuario" required>
 
-        <input type="password" name="contraseña" placeholder="Contraseña" class="contraseña">
+        <input type="password" name="password" placeholder="Contraseña" class="contraseña" required>
+
+        <c:if test="${not empty error}">
+            <p role="alert"><c:out value="${error}"/></p>
+        </c:if>
 
         <a href="/Recuperar contraseña">
             <p>¿Olvidaste tu contraseña?</p>

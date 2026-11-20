@@ -1,6 +1,5 @@
-# Copiar a application-prod.properties (NO se sube a git) y rellenar.
-# Requiere añadir al pom.xml el driver de la BD elegida (p. ej. org.postgresql:postgresql o com.mysql:mysql-connector-j).
-spring.datasource.url=jdbc:postgresql://localhost:5432/porelgustoweb
+# Copiar a application-prod.properties (NO se sube a git) y configurar credenciales de MySQL.
+spring.datasource.url=jdbc:mysql://localhost:3306/porElGusto
 spring.datasource.username=CAMBIAR
 spring.datasource.password=CAMBIAR
 spring.jpa.hibernate.ddl-auto=validate

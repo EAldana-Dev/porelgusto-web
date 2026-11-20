@@ -1,83 +1,84 @@
-
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %> <%@
+taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Por el Gusto</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Por el Gusto</title>
+        <link rel="stylesheet" href="<c:url value='/css/home.css'/>" />
+        <script src="<c:url value='/js/home.js'/>" defer></script>
+    </head>
 
-    <link rel="stylesheet" href="<c:url value='/css/home.css'/>">
-</head>
+    <body>
+        <div class="pagina">
+            <div class="anuncio_superior"></div>
 
-<body>
-    <div class="container">
-        <div class="anuncio_superior">
-            <p class="envio_gratis">
-                Envios gratis en compras desde $1500. Entrega en el mismo dia 🚚
-            </p>
-        </div>
-        
-        <div class="barra_superior">
-            <div class="inicio">
-                <a href="" class="titulo">POR EL GUSTO</a>
-                <a href="" class="envio_de_flores">ENVIO DE FLORES</a>
-            </div>
-
-            <div class="opciones">
-
-                <a href="">
-                    Tendencias
-                </a>
-
-                <div class="catalogo">
-                    <a href="">Catálogo ▲</a>
-
-                    <div class="opciones_catalogo">
-                        <a href="">Temporada</a>
-                        <a href="">Detalles</a>
-                        <a href="">Floreros</a>
-                        <a href="">Ramos</a>
-                        <a href="">Cajas</a>
-                        <a href="">Orquideas</a>
-                        <a href="">Extras</a>
-                    </div>
+            <nav class="barra_superior">
+                <div class="inicio">
+                    <a href="" class="titulo">POR EL GUSTO</a>
+                    <a href="" class="envio_de_flores">ENVIO DE FLORES</a>
                 </div>
 
-                <a href="">
-                    Ofertas
-                </a>
+                <button
+                    class="btn_menu"
+                    type="button"
+                    aria-label="Abrir menú de navegación"
+                    aria-expanded="false"
+                    aria-controls="opciones"
+                >☰</button>
+                <div class="opciones" id="opciones">
+                    <a href="">Tendencias</a>
 
-                <a href="">
-                    Pedidos
-                </a>
+                    <div class="catalogo">
+                        <a href="#" class="enlace_catalogo">Catálogo ⛛</a>
 
-                <a href="">
-                    Contacto
-                </a>
-            
-            </div>
+                        <div class="opciones_catalogo">
+                            <a href="">Temporada</a>
+                            <a href="">Detalles</a>
+                            <a href="">Floreros</a>
+                            <a href="">Ramos</a>
+                            <a href="">Cajas</a>
+                            <a href="">Orquideas</a>
+                            <a href="">Extras</a>
+                        </div>
+                    </div>
 
-            <form class="busqueda">
-                <input type="search" name="buscar" placeholder="Buscar" class="barra_busqueda">
-                <button type="submit" class="btn_busqueda">Buscar</button>
-            </form>
+                    <a href="">Ofertas</a>
+                    <a href="">Pedidos</a>
+                    <a href="">Contacto</a>
+                </div>
 
-            <div class="perfil">
-                <a href="carrito">
-                    <img src="/imagenes/Carrito de compras.jpg" alt="Foto de perfil" class="carrito">
-                </a>
-                
-                <a href="/login">
-                    <img src="/imagenes/foto_de_perfil.jpg" alt="Foto de perfil" class="foto_de_perfil">
-                </a>
-            </div>
+                <form class="busqueda" action="/catalogo" method="GET">
+                    <input
+                        type="search"
+                        name="buscar"
+                        placeholder="Buscar"
+                        class="barra_busqueda"
+                    />
+                </form>
 
+                <div class="perfil">
+                    <a href="carrito">
+                        <img
+                            src="/imagenes/Carrito de compras.jpg"
+                            alt="Carrito de compras"
+                            class="carrito"
+                        />
+                    </a>
+
+                    <a href="/login">
+                        <img
+                            src="/imagenes/foto_de_perfil.jpg"
+                            alt="Perfil"
+                            class="foto_de_perfil"
+                        />
+                    </a>
+                </div>
+            </nav>
         </div>
-
-    </div>
-</body>
+        <script src="<c:url value='/webjars/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    </body>
 </html>

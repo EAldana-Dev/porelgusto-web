@@ -1,196 +1,265 @@
 @font-face {
-    font-family: "Cormorant Garamond";
-    src: url("/fuentesporelgusto/texto/CormorantGaramond-Bold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
+  font-family: "Cormorant Garamond";
+  src: url("/fuentesporelgusto/texto/CormorantGaramond-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: "Cormorant Garamond";
-    src: url("/fuentesporelgusto/titulos/CormorantGaramond-SemiBold.ttf") format("truetype");
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
+  font-family: "Cormorant Garamond";
+  src: url("/fuentesporelgusto/titulos/CormorantGaramond-SemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
 }
 
 * {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    box-sizing: border-box;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  box-sizing: border-box;
 }
-h1{
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600;
+
+h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn_menu {
+  display: none;
+}
+
+.pagina .anuncio_superior {
+  display: flex;
+  background-color: rgb(184, 45, 177);
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+}
+
+.pagina .barra_superior {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.pagina .barra_superior .inicio {
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagina .barra_superior .inicio .titulo {
+  color: rgb(184, 45, 177);
+  font-size: 2rem;
+  margin: 0%;
+}
+
+.pagina .barra_superior .inicio .envio_de_flores {
+  color: rgb(214, 73, 191);
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  margin-top: 0%;
+}
+
+.pagina .barra_superior .opciones {
+  margin-left: 1.5rem;
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.pagina .barra_superior .opciones .catalogo {
+  position: relative;
+  display: inline-block;
+}
+
+.pagina .barra_superior .opciones .catalogo .opciones_catalogo {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 10rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.pagina .barra_superior .opciones .catalogo .opciones_catalogo a {
+  display: block;
+  padding: 0.7rem;
+  color: black;
+  text-decoration: none;
+}
+
+.pagina .barra_superior .opciones .catalogo .opciones_catalogo a:hover {
+  background-color: #f0d5ed;
+}
+
+.pagina .barra_superior .opciones .catalogo:hover .opciones_catalogo {
+  display: block;
+}
+
+.pagina .barra_superior .opciones .catalogo .opciones_catalogo.show {
+  display: block;
+}
+
+.pagina .barra_superior .busqueda {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  gap: 1rem;
+}
+
+.pagina .barra_superior .busqueda .barra_busqueda {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 1px solid #785b5b;
+  border-radius: 1rem;
+  outline: none;
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.pagina .barra_superior .busqueda .barra_busqueda:focus {
+  border-color: rgb(184, 45, 177);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(184, 45, 177, 0.15);
+}
+
+.pagina .barra_superior .perfil {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pagina .barra_superior .perfil .carrito {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-top: 0.4rem;
+}
+
+.pagina .barra_superior .perfil .foto_de_perfil {
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-top: 0.4rem;
+}
+
+@media screen and (max-width: 480px) {
+  .pagina .barra_superior {
+    position: relative;
+    flex-wrap: wrap;
+    padding: 0.7rem;
+    z-index: 10;
+  }
+
+  .pagina .barra_superior .inicio {
+    order: 1;
+  }
+
+  .pagina .barra_superior .inicio .titulo {
+    font-size: 1.5rem;
+  }
+
+  .pagina .barra_superior .inicio .envio_de_flores {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  .pagina .barra_superior .btn_menu {
+    order: 2;
+    display: block;
     margin: 0;
-    padding: 0;
-}
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    color: rgb(184, 45, 177);
+    font-size: 2rem;
+    cursor: pointer;
+  }
 
-a{
-    text-decoration: none;
-}
+  .pagina .barra_superior .opciones {
+    order: 5;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 0.5rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+  }
 
-.container{
+  .pagina .barra_superior .opciones.activo {
+    display: flex;
+  }
 
-    .anuncio_superior{
-        display: flex;
-        background-color: rgb(184, 45, 177);
-        align-items: center;
-        justify-content: center;
-        max-height: 2rem;
-        .envio_gratis{
-            text-align: center;
-        }
-    }
+  .pagina .barra_superior .opciones > a,
+  .pagina .barra_superior .opciones .catalogo > a {
+    display: block;
+    padding: 0.8rem;
+    color: black;
+  }
 
-    .barra_superior {
-        background-color: rgb(255, 255, 255);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        width: 100%;
-        
+  .pagina .barra_superior .opciones .catalogo {
+    display: none;
+  }
 
-        .inicio {
-            white-space: nowrap;
-            display: flex;
-            flex-direction: column;
+  .pagina .barra_superior .opciones .catalogo .opciones_catalogo {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+  }
 
-            .titulo {
-                color: rgb(184, 45, 177);
-                font-size: 2rem;
-                margin: 0%;
-                
-            }
+  .pagina .barra_superior .busqueda {
+    order: 4;
+    flex-basis: 100%;
+    margin: 0.5rem 0 0;
+  }
 
-            .envio_de_flores {
-                color: rgb(214, 73, 191);
-                font-size: 1rem;
-                margin-left: 1.5rem;
-                margin-top: 0%;
-            }
-        }
+  .pagina .barra_superior .busqueda .barra_busqueda {
+    width: 100%;
+  }
 
-        .opciones{
+  .pagina .barra_superior .perfil {
+    order: 3;
+    gap: 0.5rem;
+  }
 
-            margin-left: 1.5rem;
-            white-space: nowrap;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            gap: 2rem;
+  .pagina .barra_superior .perfil .carrito {
+    width: 2rem;
+    height: 2rem;
+  }
 
-            .catalogo {
-                position: relative;
-                display: inline-block;
-
-                .opciones_catalogo {
-                    display: none;
-                    position: absolute;
-                    background-color: white;
-                    min-width: 10rem;
-                    border-radius: 0.5rem;
-                    padding: 0.5rem;
-
-                    a {
-                        display: block;
-                        padding: 0.7rem;
-                        color: black;
-                        text-decoration: none;
-
-                        &:hover {
-                            background-color: #f0d5ed;
-                        }
-                    }
-                }
-
-                &:hover .opciones_catalogo {
-                    display: block;
-                }
-            }
-        }
-
-
-        .busqueda {
-            display: flex;
-            flex: 1;
-            align-items: center;
-            justify-content: center;
-            margin-left: 2rem;
-            margin-right: 2rem;
-            gap: 1rem;
-
-            .barra_busqueda {
-                flex: 1;
-                padding: 0.8rem 1.2rem;
-
-                border: 1px solid #785b5b;
-                border-radius: 2rem;
-                outline: none;
-
-                background-color: #f5f5f5;
-                color: #333;
-
-                font-size: 1rem;
-
-                transition: 0.3s;
-
-                &:focus {
-                    border-color: rgb(184, 45, 177);
-                    background-color: white;
-                    box-shadow: 0 0 0 3px rgba(184, 45, 177, 0.15);
-                }
-            }
-        
-            .btn_busqueda{
-                padding-left: 1rem;
-                padding-right: 1rem;
-
-                padding-top: .5rem;
-                padding-bottom: .5rem;
-                border: none;
-                border-radius: 2rem;
-
-                background-color: rgb(184, 45, 177);
-                color: white;
-
-                font-size: 1rem;
-                cursor: pointer;
-
-                transition: 0.3s;
-
-                &:hover {
-                    background-color: rgb(145, 30, 140);
-                    transform: scale(1.04);
-                }
-            }
-        }
-
-
-        .perfil {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-
-            
-
-            .carrito {
-                width: 2.5rem;
-                height: 2.5rem;
-                object-fit: contain;
-                border-radius: 50%;
-            }
-
-            .foto_de_perfil {
-                width: 3rem;
-                height: 3rem;
-                object-fit: contain;
-                border-radius: 50%;
-            }
-        }
-    }
+  .pagina .barra_superior .perfil .foto_de_perfil {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
 }
