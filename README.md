@@ -143,6 +143,8 @@ rellenar los datos, añadir el driver de la base de datos al `pom.xml` y arranca
 
 - `POST /api/auth/registro`: recibe `nombre`, `direccion`, `correoElectronico`, `telefono` y `password` (mínimo 8 caracteres). Asigna el tipo de usuario configurado y devuelve un JWT.
 - `POST /api/auth/login`: recibe `correoElectronico` y `password`; la respuesta contiene `token`, `tokenType` (`Bearer`), `expiresIn` y un resumen del usuario.
+- La página `/login` también permite autenticarse con Google. La primera vez se crea una cuenta local con el correo verificado de Google; las siguientes veces se reutiliza. El backend genera el mismo JWT y lo guarda en la sesión web.
+- Para habilitar Google configura `GOOGLE_CLIENT_ID` y `GOOGLE_CLIENT_SECRET` y arranca con los perfiles `dev,google` (por ejemplo, `--spring.profiles.active=dev,google`). En Google Cloud registra `http://localhost:8080/login/oauth2/code/google` como URI de redirección autorizada (y la URI del dominio desplegado en producción). Sin el perfil `google`, el resto del sitio arranca sin requerir esas credenciales.
 - Las contraseñas se almacenan con BCrypt. Configura `APP_AUTH_TOKEN_SECRET` con un secreto aleatorio de al menos 32 bytes antes de desplegar; el valor del perfil `dev` es solo para desarrollo.
 - `APP_AUTH_DEFAULT_USER_TYPE_ID` define el ID de `TipoUsuario` asignado al registrarse (por defecto `1`); asegúrate de que exista en la base de datos.
 

@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -60,15 +61,45 @@ public class AuthService {
 
     @Transactional(readOnly = true)
     public AuthResponse login(LoginRequest request) {
-        List<Usuario> coincidencias = usuarios.findAllByNombreIgnoreCase(request.usuario().trim()).stream()
+        Usuario usuario = usuarios.findByCorreoElectronicoIgnoreCase(request.correoElectronico().trim())
+                .filter(cuenta -> cuenta.getPassword() != null
+                        && passwordEncoder.matches(request.password(), cuenta.getPassword()))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciales inválidas"));
+        return response(usuario);
+    }
+
+    @Transactional(readOnly = true)
+    public AuthResponse loginPorNombre(String nombre, String password) {
+        List<Usuario> coincidencias = usuarios.findAllByNombreIgnoreCase(nombre.trim()).stream()
                 .filter(usuario -> usuario.getPassword() != null
-                        && passwordEncoder.matches(request.password(), usuario.getPassword()))
+                        && passwordEncoder.matches(password, usuario.getPassword()))
                 .limit(2)
                 .toList();
         if (coincidencias.size() != 1) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciales inválidas");
         }
         return response(coincidencias.get(0));
+    }
+
+    @Transactional
+    public AuthResponse loginConGoogle(String email, String nombre) {
+        String normalizedEmail = email.trim();
+        Usuario usuario = usuarios.findByCorreoElectronicoIgnoreCase(normalizedEmail).orElseGet(() -> {
+            TipoUsuario tipo = tiposUsuario.findById(defaultUserTypeId).orElseGet(() -> {
+                TipoUsuario predeterminado = new TipoUsuario();
+                predeterminado.setIdTipoUsuario(defaultUserTypeId);
+                predeterminado.setRol("CLIENTE");
+                return tiposUsuario.save(predeterminado);
+            });
+            Usuario nuevo = new Usuario();
+            nuevo.setNombre(nombre == null || nombre.isBlank() ? normalizedEmail : nombre.trim());
+            nuevo.setCorreoElectronico(normalizedEmail);
+            nuevo.setPassword(passwordEncoder.encode(UUID.randomUUID().toString()));
+            nuevo.setFechaRegistro(LocalDate.now());
+            nuevo.setTipoUsuario(tipo);
+            return usuarios.save(nuevo);
+        });
+        return response(usuario);
     }
 
     private AuthResponse response(Usuario usuario) {

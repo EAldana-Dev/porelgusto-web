@@ -87,7 +87,11 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     <p>Hasta 20% de descuento</p>
                     <button class="comprar_ahora">Comprar ahora</button>
                 </div>
+                <div class="tendencias">
+                    <h1>Hola</h1>
+                </div>
             </main>
+
         </div>
         <script src="<c:url value='/webjars/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     </body>

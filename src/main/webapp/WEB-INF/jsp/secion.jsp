@@ -32,6 +32,12 @@
         <c:if test="${not empty error}">
             <p role="alert"><c:out value="${error}"/></p>
         </c:if>
+        <c:if test="${param.googleUnavailable ne null}">
+            <p role="alert">El inicio con Google todavía no está configurado. Configura las credenciales OAuth y activa el perfil google.</p>
+        </c:if>
+        <c:if test="${param.googleError ne null}">
+            <p role="alert">Google no devolvió un correo verificado. Intenta con otra cuenta.</p>
+        </c:if>
 
         <a href="/Recuperar contraseña">
             <p>¿Olvidaste tu contraseña?</p>
@@ -43,6 +49,7 @@
         </button>
 
     </form>
+    <a href="<c:url value='/oauth2/authorization/google'/>">Iniciar sesión con Google</a>
     <a href="/signup">
     <p>Crear cuenta</p>
     </a>

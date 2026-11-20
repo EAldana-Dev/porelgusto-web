@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 import jakarta.servlet.http.HttpSession;
 import com.neksbyte.porelgustoweb.dto.auth.AuthResponse;
-import com.neksbyte.porelgustoweb.dto.auth.LoginRequest;
 import com.neksbyte.porelgustoweb.service.AuthService;
 
 @Controller
@@ -29,7 +28,7 @@ public class Sesion {
         }
 
         try {
-            AuthResponse respuesta = authService.login(new LoginRequest(usuario, password));
+            AuthResponse respuesta = authService.loginPorNombre(usuario, password);
             session.setAttribute("authToken", respuesta.token());
             session.setAttribute("authTokenType", respuesta.tokenType());
             session.setAttribute("authUsuario", respuesta.usuario());
