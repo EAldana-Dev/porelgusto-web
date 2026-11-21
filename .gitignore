@@ -6,8 +6,10 @@ target/
 
 # Configuración local / secretos
 application-prod.properties
+application-local.properties
 *.env
 .env
+
 
 # Neovim / jdtls (los genera el IDE)
 .classpath
