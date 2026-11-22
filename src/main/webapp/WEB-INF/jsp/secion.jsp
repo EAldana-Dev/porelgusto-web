@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <div class="barra_superior">
-            <a href="carrito">
+            <a href="home">
                 <img src="/imagenes/logo.png" alt="Foto de perfil" class="logo">
             </a>
         </div>

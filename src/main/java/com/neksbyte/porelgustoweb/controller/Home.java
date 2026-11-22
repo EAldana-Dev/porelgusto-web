@@ -26,5 +26,11 @@ public class Home {
         return "secion";
     }
 
+    @GetMapping("/signup")
+    public String crearCuenta(Model model) {
+        model.addAttribute("titulo", "Crear cuenta");
+        return "singup";
+    }
+
     
 }
