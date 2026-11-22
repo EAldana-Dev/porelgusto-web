@@ -16,7 +16,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -79,27 +78,6 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciales inválidas");
         }
         return response(coincidencias.get(0));
-    }
-
-    @Transactional
-    public AuthResponse loginConGoogle(String email, String nombre) {
-        String normalizedEmail = email.trim();
-        Usuario usuario = usuarios.findByCorreoElectronicoIgnoreCase(normalizedEmail).orElseGet(() -> {
-            TipoUsuario tipo = tiposUsuario.findById(defaultUserTypeId).orElseGet(() -> {
-                TipoUsuario predeterminado = new TipoUsuario();
-                predeterminado.setIdTipoUsuario(defaultUserTypeId);
-                predeterminado.setRol("CLIENTE");
-                return tiposUsuario.save(predeterminado);
-            });
-            Usuario nuevo = new Usuario();
-            nuevo.setNombre(nombre == null || nombre.isBlank() ? normalizedEmail : nombre.trim());
-            nuevo.setCorreoElectronico(normalizedEmail);
-            nuevo.setPassword(passwordEncoder.encode(UUID.randomUUID().toString()));
-            nuevo.setFechaRegistro(LocalDate.now());
-            nuevo.setTipoUsuario(tipo);
-            return usuarios.save(nuevo);
-        });
-        return response(usuario);
     }
 
     private AuthResponse response(Usuario usuario) {
