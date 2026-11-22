@@ -188,13 +188,10 @@ a {
 .pagina .main .anuncio .comprar_ahora{
   margin: 1rem;
   border-radius: 1rem;
-  background-color: aqua;
+  background-color: rgb(168, 35, 104);
   width: 8rem;
 }
 
-.pagina .main .tendencias{
-  height: 20rem;
-}
 
 @media screen and (max-width: 480px) {
   .pagina .barra_superior {
