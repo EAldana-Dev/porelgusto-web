@@ -163,9 +163,9 @@ public class QrCodeService {
         int lado = tamanoLogo + (RELLENO_LOGO * 2);
 
         g2d.setColor(Color.WHITE);
-        g2d.fill(new RoundRectangle2D.Float(x, y, lado, lado, 10, 10));
+        g2d.fill(new RoundRectangle2D.Float(x, y, lado, lado, 1, 1));
     }
-    
+
 
     private byte[] convertirBufferedImageAPng(BufferedImage imagen) throws IOException {
         try (ByteArrayOutputStream salidaStream = new ByteArrayOutputStream()) {
