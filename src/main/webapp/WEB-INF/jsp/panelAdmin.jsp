@@ -5,7 +5,7 @@
     <title>${titulo}</title>
   </head>
   <body>
-  <p><a href="#">qr</a></p>
+  <p><a href="#">usuarios</a></p>
   <p><a href="#">productos</a></p>
   <p><a href="#">pedidos</a></p>
   <p><a href="#">otro por me da hueva</a></p>
