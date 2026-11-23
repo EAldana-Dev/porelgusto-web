@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class HomeServlet {
+public class Home {
 
     @GetMapping("/")
     public String redirigirInicio() {
@@ -24,6 +24,12 @@ public class HomeServlet {
     public String secion(Model model) {
         model.addAttribute("titulo", "Inicio");
         return "secion";
+    }
+
+    @GetMapping("/signup")
+    public String crearCuenta(Model model) {
+        model.addAttribute("titulo", "Crear cuenta");
+        return "singup";
     }
 
     

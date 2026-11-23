@@ -1,5 +1,6 @@
 package com.neksbyte.porelgustoweb.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,11 +19,13 @@ public class ListaDeseoArregloFloral {
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idLista")
     @JoinColumn(name = "idLista")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ListaDeDeseos listaDeDeseos;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("idArregloFloral")
     @JoinColumn(name = "idArregloFloral")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ArregloFloral arregloFloral;
 
     public ListaDeseoArregloFloral() {

@@ -1,4 +1,5 @@
 package com.neksbyte.porelgustoweb.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -20,12 +21,15 @@ public class CarritoDeCompra {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "carritoDeCompra")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ContenidoCarrito> contenidos = new ArrayList<>();
 
     @OneToMany(mappedBy = "carritoDeCompra")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Pedido> pedidos = new ArrayList<>();
 
     public CarritoDeCompra() {

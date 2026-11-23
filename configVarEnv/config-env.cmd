@@ -1,4 +1,6 @@
 @echo off
+rem Ejecutar desde una ventana CMD con: call configVarEnv\config-env.cmd
+rem Luego iniciar la aplicacion en esa misma ventana.
 setlocal
 
 set "DEFAULT_DB_URL=jdbc:mysql://localhost:3306/porElGusto"
@@ -22,9 +24,13 @@ endlocal & (
   set "DB_URL=%DB_URL%"
   set "DB_USERNAME=%DB_USERNAME%"
   set "DB_PASSWORD=%DB_PASSWORD%"
+  set "SPRING_DATASOURCE_URL=%DB_URL%"
+  set "SPRING_DATASOURCE_USERNAME=%DB_USERNAME%"
+  set "SPRING_DATASOURCE_PASSWORD=%DB_PASSWORD%"
   set "AUTH_TOKEN_SECRET=%AUTH_TOKEN_SECRET%"
   set "SPRING_PROFILES_ACTIVE=prod"
 )
 
 echo.
-echo Variables configuradas en esta sesion de CMD (SPRING_PROFILES_ACTIVE=prod).
+echo Variables configuradas en esta sesion de CMD.
+echo Ejecuta mvnw.cmd spring-boot:run en esta misma ventana.

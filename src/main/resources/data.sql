@@ -1,7 +1,7 @@
 -- ============================================================
 -- 1. TipoUsuario
 -- ============================================================
-INSERT INTO TipoUsuario (idTipoUsuario, rol) VALUES
+INSERT IGNORE INTO TipoUsuario (idTipoUsuario, rol) VALUES
                                                  (1, 'Cliente'),
                                                  (2, 'Administrador'),
                                                  (3, 'Empleado'),
@@ -10,7 +10,7 @@ INSERT INTO TipoUsuario (idTipoUsuario, rol) VALUES
 -- ============================================================
 -- 2. Usuario
 -- ============================================================
-INSERT INTO Usuario (idUsuario, nombre, direccion, password, correoElectronico, telefono, fechaRegistro, idTipoUsuario) VALUES
+INSERT IGNORE INTO Usuario (idUsuario, nombre, direccion, password, correoElectronico, telefono, fechaRegistro, idTipoUsuario) VALUES
                                                                                                                             (1, 'Ana María López', 'Av. Reforma 123, CDMX', 'hash_ana123', 'ana.lopez@email.com', '5551234567', '2024-01-15', 1),
                                                                                                                             (2, 'Carlos Ramírez', 'Calle 5 de Mayo 45, Puebla', 'hash_carlos456', 'carlos.ramirez@email.com', '2229876543', '2024-02-20', 1),
                                                                                                                             (3, 'Laura Fernández', 'Blvd. Kukulcán 78, Cancún', 'hash_laura789', 'laura.fernandez@email.com', '9984567890', '2024-03-10', 1),
@@ -22,7 +22,7 @@ INSERT INTO Usuario (idUsuario, nombre, direccion, password, correoElectronico, 
 -- ============================================================
 -- 3. Contacto
 -- ============================================================
-INSERT INTO Contacto (idContacto, nombre, tipoContacto, idUsuario) VALUES
+INSERT IGNORE INTO Contacto (idContacto, nombre, tipoContacto, idUsuario) VALUES
                                                                        (1, 'Ana María López', 'Principal', 1),
                                                                        (2, 'Carlos Ramírez', 'Principal', 2),
                                                                        (3, 'Laura Fernández', 'Principal', 3),
@@ -34,7 +34,7 @@ INSERT INTO Contacto (idContacto, nombre, tipoContacto, idUsuario) VALUES
 -- ============================================================
 -- 4. MetodoPago
 -- ============================================================
-INSERT INTO MetodoPago (idMetodosDePago, tipoPago, descripcion, idUsuario) VALUES
+INSERT IGNORE INTO MetodoPago (idMetodosDePago, tipoPago, descripcion, idUsuario) VALUES
                                                                                (1, 'Tarjeta de Crédito', 'Visa terminación 1234', 1),
                                                                                (2, 'PayPal', 'cuenta carlos.ramirez@email.com', 2),
                                                                                (3, 'Tarjeta de Débito', 'Mastercard terminación 5678', 3),
@@ -45,7 +45,7 @@ INSERT INTO MetodoPago (idMetodosDePago, tipoPago, descripcion, idUsuario) VALUE
 -- ============================================================
 -- 5. ListaDeDeseos
 -- ============================================================
-INSERT INTO ListaDeDeseos (idLista, fechaCreacion, idUsuario) VALUES
+INSERT IGNORE INTO ListaDeDeseos (idLista, fechaCreacion, idUsuario) VALUES
                                                                   (1, '2024-05-01', 1),
                                                                   (2, '2024-05-10', 2),
                                                                   (3, '2024-05-15', 3),
@@ -54,7 +54,7 @@ INSERT INTO ListaDeDeseos (idLista, fechaCreacion, idUsuario) VALUES
 -- ============================================================
 -- 6. ArregloFloral
 -- ============================================================
-INSERT INTO ArregloFloral (idArregloFloral, nombre, detalles, costo, idTipoArreglo, categoria, etiqueta, disponibilidad) VALUES
+INSERT IGNORE INTO ArregloFloral (idArregloFloral, nombre, detalles, costo, idTipoArreglo, categoria, etiqueta, disponibilidad) VALUES
                                                                                                                              (1, 'Ramo de Rosas Rojas', '12 rosas rojas con follaje y lazo', 850.00, 1, 'Ramos', 'Romántico', 'Disponible'),
                                                                                                                              (2, 'Arreglo Primaveral', 'Girasoles, margaritas y tulipanes', 650.00, 2, 'Arreglos', 'Alegre', 'Disponible'),
                                                                                                                              (3, 'Orquídea Elegante', 'Orquídea phalaenopsis en maceta de cerámica', 1200.00, 3, 'Plantas', 'Elegante', 'Disponible'),
@@ -67,7 +67,7 @@ INSERT INTO ArregloFloral (idArregloFloral, nombre, detalles, costo, idTipoArreg
 -- ============================================================
 -- 7. ListaDeseo_ArregloFloral
 -- ============================================================
-INSERT INTO ListaDeseo_ArregloFloral (idLista, idArregloFloral) VALUES
+INSERT IGNORE INTO ListaDeseo_ArregloFloral (idLista, idArregloFloral) VALUES
                                                                     (1, 1),
                                                                     (1, 3),
                                                                     (1, 6),
@@ -81,7 +81,7 @@ INSERT INTO ListaDeseo_ArregloFloral (idLista, idArregloFloral) VALUES
 -- ============================================================
 -- 8. CarritoDeCompra
 -- ============================================================
-INSERT INTO CarritoDeCompra (idCarritoDeCompra, fecha, total, idUsuario) VALUES
+INSERT IGNORE INTO CarritoDeCompra (idCarritoDeCompra, fecha, total, idUsuario) VALUES
                                                                              (1, '2024-06-10', 1500.00, 1),
                                                                              (2, '2024-06-12', 650.00, 2),
                                                                              (3, '2024-06-15', 1200.00, 3),
@@ -91,7 +91,7 @@ INSERT INTO CarritoDeCompra (idCarritoDeCompra, fecha, total, idUsuario) VALUES
 -- ============================================================
 -- 9. ContenidoCarrito
 -- ============================================================
-INSERT INTO ContenidoCarrito (idContenido, cantidad, precioUnitario, idCarritoDeCompra, idArregloFloral) VALUES
+INSERT IGNORE INTO ContenidoCarrito (idContenido, cantidad, precioUnitario, idCarritoDeCompra, idArregloFloral) VALUES
                                                                                                              (1, 1, 850.00, 1, 1),
                                                                                                              (2, 1, 650.00, 1, 2),
                                                                                                              (3, 1, 650.00, 2, 2),
@@ -103,7 +103,7 @@ INSERT INTO ContenidoCarrito (idContenido, cantidad, precioUnitario, idCarritoDe
 -- ============================================================
 -- 10. Cupon
 -- ============================================================
-INSERT INTO Cupon (idCupon, nombre, codigo, fechaVencimiento, limiteDeUsos, estado, porcentajeDescuento) VALUES
+INSERT IGNORE INTO Cupon (idCupon, nombre, codigo, fechaVencimiento, limiteDeUsos, estado, porcentajeDescuento) VALUES
                                                                                                              (1, 'Descuento San Valentín', 'AMOR2024', '2024-02-14', 100, 'Expirado', 15.00),
                                                                                                              (2, 'Bienvenida', 'BIENVENIDO10', '2024-12-31', 500, 'Activo', 10.00),
                                                                                                              (3, 'Día de las Madres', 'MADRES2024', '2024-05-10', 200, 'Expirado', 20.00),
@@ -114,7 +114,7 @@ INSERT INTO Cupon (idCupon, nombre, codigo, fechaVencimiento, limiteDeUsos, esta
 -- ============================================================
 -- 11. Pedido
 -- ============================================================
-INSERT INTO Pedido (idPedido, fechaCreacion, estadoEnvio, direccionEntrega, fechaEntrega, instruccionesEspeciales, idCarritoDeCompra, idMetodosDePago, idCupon) VALUES
+INSERT IGNORE INTO Pedido (idPedido, fechaCreacion, estadoEnvio, direccionEntrega, fechaEntrega, instruccionesEspeciales, idCarritoDeCompra, idMetodosDePago, idCupon) VALUES
                                                                                                                                                                     (1, '2024-06-10', 'Entregado', 'Av. Reforma 123, CDMX', '2024-06-11', 'Dejar en recepción', 1, 1, 2),
                                                                                                                                                                     (2, '2024-06-12', 'En camino', 'Calle 5 de Mayo 45, Puebla', '2024-06-13', 'Llamar al llegar', 2, 2, NULL),
                                                                                                                                                                     (3, '2024-06-15', 'Preparando', 'Blvd. Kukulcán 78, Cancún', '2024-06-17', 'Entregar antes de las 12:00', 3, 3, 4),
@@ -123,7 +123,7 @@ INSERT INTO Pedido (idPedido, fechaCreacion, estadoEnvio, direccionEntrega, fech
 -- ============================================================
 -- 12. Ticket
 -- ============================================================
-INSERT INTO Ticket (idTicket, folioVenta, fecha, hora, total, idPedido) VALUES
+INSERT IGNORE INTO Ticket (idTicket, folioVenta, fecha, hora, total, idPedido) VALUES
                                                                             (1, 'TK-2024-0001', '2024-06-10', '10:30:00', 1435.00, 1),
                                                                             (2, 'TK-2024-0002', '2024-06-12', '14:15:00', 650.00, 2),
                                                                             (3, 'TK-2024-0003', '2024-06-15', '09:45:00', 1020.00, 3),
@@ -132,7 +132,7 @@ INSERT INTO Ticket (idTicket, folioVenta, fecha, hora, total, idPedido) VALUES
 -- ============================================================
 -- 13. Factura
 -- ============================================================
-INSERT INTO Factura (idFactura, RFC, razonSocial, direccionFiscal, cfdi, fechaEmision, total, idPedido) VALUES
+INSERT IGNORE INTO Factura (idFactura, RFC, razonSocial, direccionFiscal, cfdi, fechaEmision, total, idPedido) VALUES
                                                                                                             (1, 'LOPA850101ABC', 'Ana María López', 'Av. Reforma 123, CDMX', 'CFDI-2024-0001', '2024-06-10', 1435.00, 1),
                                                                                                             (2, 'RAMC900202DEF', 'Carlos Ramírez', 'Calle 5 de Mayo 45, Puebla', 'CFDI-2024-0002', '2024-06-12', 650.00, 2),
                                                                                                             (3, 'FEGL920303GHI', 'Laura Fernández', 'Blvd. Kukulcán 78, Cancún', 'CFDI-2024-0003', '2024-06-15', 1020.00, 3);
@@ -140,7 +140,7 @@ INSERT INTO Factura (idFactura, RFC, razonSocial, direccionFiscal, cfdi, fechaEm
 -- ============================================================
 -- 14. Imagen
 -- ============================================================
-INSERT INTO Imagen (idImagen, nombre, direccionImg, idArregloFloral) VALUES
+INSERT IGNORE INTO Imagen (idImagen, nombre, direccionImg, idArregloFloral) VALUES
                                                                          (1, 'rosas_rojas_1', 'https://placehold.co/600x400/png', 1),
                                                                          (2, 'rosas_rojas_2', 'https://placehold.co/600x400/png', 1),
                                                                          (3, 'primaveral_1', 'https://placehold.co/600x400/png', 2),
@@ -155,7 +155,7 @@ INSERT INTO Imagen (idImagen, nombre, direccionImg, idArregloFloral) VALUES
 -- ============================================================
 -- 15. Modificacion
 -- ============================================================
-INSERT INTO Modificacion (idModificacion, nombre, descripcion, idCosto, tipoModificacion, idArregloFloral) VALUES
+INSERT IGNORE INTO Modificacion (idModificacion, nombre, descripcion, idCosto, tipoModificacion, idArregloFloral) VALUES
                                                                                                                (1, 'Tarjeta dedicatoria', 'Mensaje impreso en papel algodón', 50, 'Extra', 1),
                                                                                                                (2, 'Extra rosas', 'Agregar 6 rosas rojas adicionales', 350, 'Tamaño', 1),
                                                                                                                (3, 'Listón dorado', 'Cambio de listón estándar a satinado dorado', 30, 'Detalle', 2);

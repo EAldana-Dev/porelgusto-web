@@ -1,4 +1,5 @@
 package com.neksbyte.porelgustoweb.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ public class TipoUsuario {
     private String rol;
 
     @OneToMany(mappedBy = "tipoUsuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Usuario> usuarios = new ArrayList<>();
 
     public TipoUsuario() {

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class AuthService {
@@ -40,9 +41,12 @@ public class AuthService {
         if (usuarios.existsByCorreoElectronicoIgnoreCase(email)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "El correo ya está registrado");
         }
-        TipoUsuario tipo = tiposUsuario.findById(defaultUserTypeId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-                        "No existe el tipo de usuario predeterminado configurado"));
+        TipoUsuario tipo = tiposUsuario.findById(defaultUserTypeId).orElseGet(() -> {
+            TipoUsuario tipoPredeterminado = new TipoUsuario();
+            tipoPredeterminado.setIdTipoUsuario(defaultUserTypeId);
+            tipoPredeterminado.setRol("CLIENTE");
+            return tiposUsuario.save(tipoPredeterminado);
+        });
         Usuario usuario = new Usuario();
         usuario.setNombre(request.nombre().trim());
         usuario.setDireccion(request.direccion());
@@ -57,11 +61,23 @@ public class AuthService {
     @Transactional(readOnly = true)
     public AuthResponse login(LoginRequest request) {
         Usuario usuario = usuarios.findByCorreoElectronicoIgnoreCase(request.correoElectronico().trim())
+                .filter(cuenta -> cuenta.getPassword() != null
+                        && passwordEncoder.matches(request.password(), cuenta.getPassword()))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciales inválidas"));
-        if (!passwordEncoder.matches(request.password(), usuario.getPassword())) {
+        return response(usuario);
+    }
+
+    @Transactional(readOnly = true)
+    public AuthResponse loginPorNombre(String nombre, String password) {
+        List<Usuario> coincidencias = usuarios.findAllByNombreIgnoreCase(nombre.trim()).stream()
+                .filter(usuario -> usuario.getPassword() != null
+                        && passwordEncoder.matches(password, usuario.getPassword()))
+                .limit(2)
+                .toList();
+        if (coincidencias.size() != 1) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Credenciales inválidas");
         }
-        return response(usuario);
+        return response(coincidencias.get(0));
     }
 
     private AuthResponse response(Usuario usuario) {

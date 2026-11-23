@@ -1,12 +1,10 @@
-# Copiar a application-prod.properties (ignorado por Git) o definir variables de entorno.
-# Requiere el driver correspondiente en pom.xml (MySQL o PostgreSQL).
-
+# Copiar a application-prod.properties (ignorado por Git) si se desea config. adicional.
 spring.datasource.url=${DB_URL:jdbc:mysql://localhost:3306/porElGusto}
-spring.datasource.username=${DB_USERNAME}
+spring.datasource.username=${DB_USERNAME:root}
 spring.datasource.password=${DB_PASSWORD}
 spring.datasource.driver-class-name=${DB_DRIVER:com.mysql.cj.jdbc.Driver}
 
-spring.jpa.hibernate.ddl-auto=none
+spring.jpa.hibernate.ddl-auto=validate
 spring.jpa.show-sql=false
 spring.jpa.properties.hibernate.format_sql=false
 
