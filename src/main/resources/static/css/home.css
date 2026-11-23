@@ -236,6 +236,190 @@ a {
         0 2px 6px rgba(168, 35, 104, 0.3);
 }
 
+.temporada {
+  padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3.5rem);
+  background: #faf7f4;
+}
+
+.temporada__encabezado {
+  display: flex;
+  max-width: 1440px;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto 1.5rem;
+}
+
+.temporada__eyebrow {
+  margin: 0 0 0.25rem;
+  color: #9a6268;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.temporada h1 {
+  margin: 0;
+  color: #49383b;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.temporada__catalogo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #7d3f4c;
+  border-radius: 999px;
+  color: #7d3f4c;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.temporada__catalogo:hover {
+  background: #7d3f4c;
+  color: #fff;
+}
+
+.temporada__fila {
+  display: grid;
+  grid-auto-columns: minmax(220px, 1fr);
+  grid-auto-flow: column;
+  gap: 1.1rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 0.25rem 0.25rem 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: #c9a8a6 transparent;
+  scrollbar-width: thin;
+}
+
+.temporada__fila > * {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.temporada .product-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #eee5e1;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 6px 20px rgb(68 45 38 / 8%);
+}
+
+.temporada .product-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f3eeeb;
+}
+
+.temporada .product-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.temporada .product-card__placeholder {
+  display: grid;
+  height: 100%;
+  place-items: center;
+  color: #b88885;
+  font-size: 2.5rem;
+}
+
+.temporada .product-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.temporada .product-card__title {
+  display: -webkit-box;
+  min-height: 2.7em;
+  margin: 0 0 0.6rem;
+  overflow: hidden;
+  color: #3f3334;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  text-align: center;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.temporada .product-card__price {
+  margin: 0 0 1rem;
+  color: #8e4d5a;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.temporada .product-card__link {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.65rem 0.9rem;
+  border-radius: 9px;
+  background: #7d3f4c;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.temporada .product-card__link:hover {
+  background: #62313c;
+}
+
+.temporada__tarjeta-final {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px dashed #c9a8a6;
+  border-radius: 16px;
+  background: #f5ece9;
+  color: #70434a;
+  text-align: center;
+}
+
+.temporada__flor {
+  font-size: 2.5rem;
+}
+
+.temporada__tarjeta-final span:last-child {
+  font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+  .temporada__fila {
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .temporada__encabezado {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .temporada__fila {
+    grid-auto-columns: minmax(72vw, 1fr);
+  }
+}
+
 
 
 @media screen and (max-width: 480px) {

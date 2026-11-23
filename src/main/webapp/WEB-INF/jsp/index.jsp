@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %> <%@
 taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="miLiberiaParaProducto" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -33,8 +34,6 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     ☰
                 </button>
                 <div class="opciones" id="opciones">
-                    <a href="">Tendencias</a>
-
                     <div class="catalogo">
                         <a href="Catalogo" class="enlace_catalogo">Catálogo ⛛</a>
 
@@ -64,7 +63,7 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                 </form>
 
                 <div class="perfil">
-                    <a href="carrito">
+                    <a href="MiCarrito">
                         <img
                             src="/imagenes/Carrito de compras.jpg"
                             alt="Carrito de compras"
@@ -88,6 +87,24 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     <p>Hasta 20% de descuento</p>
                     <button class="comprar_ahora">Comprar ahora</button>
                 </div>
+
+                <section class="temporada" id="temporada" aria-labelledby="titulo-temporada">
+                    <div class="temporada__encabezado">
+                        <div>
+                            <h1 class="temporada__eyebrow">Favoritos de la florería</h1>
+                            <h1 id="titulo-temporada">Temporada</h1>
+                        </div>
+                        <a class="temporada__catalogo" href="<c:url value='/Catalogo'/>">
+                            Ver catálogo completo <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+
+                    <div class="temporada__fila">
+                        <c:forEach var="product" items="${temporada}">
+                            <miLiberiaParaProducto:productCard product="${product}" />
+                        </c:forEach>
+                    </div>
+                </section>
             </main>
 
         </div>

@@ -1,12 +1,21 @@
 package com.neksbyte.porelgustoweb.controller;
 
+import com.neksbyte.porelgustoweb.dao.ArregloFloralDao;
+import com.neksbyte.porelgustoweb.model.ArregloFloral;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.Comparator;
+import java.util.List;
 
 @Controller
 public class Home {
+    private final ArregloFloralDao arreglos;
+
+    public Home(ArregloFloralDao arreglos) {
+        this.arreglos = arreglos;
+    }
 
     @GetMapping("/")
     public String redirigirInicio() {
@@ -16,6 +25,11 @@ public class Home {
     @GetMapping("/home")
     public String inicio(Model model) {
         model.addAttribute("titulo", "Inicio");
+        List<ArregloFloral> temporada = arreglos.findAll().stream()
+                .sorted(Comparator.comparing(ArregloFloral::getIdArregloFloral))
+                .limit(6)
+                .toList();
+        model.addAttribute("temporada", temporada);
         return "index";
     }
 
