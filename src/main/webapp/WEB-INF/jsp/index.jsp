@@ -36,7 +36,7 @@ taglib prefix="c" uri="jakarta.tags.core" %>
                     <a href="">Tendencias</a>
 
                     <div class="catalogo">
-                        <a href="#" class="enlace_catalogo">Catálogo ⛛</a>
+                        <a href="Catalogo" class="enlace_catalogo">Catálogo ⛛</a>
 
                         <div class="opciones_catalogo">
                             <a href="">Temporada</a>

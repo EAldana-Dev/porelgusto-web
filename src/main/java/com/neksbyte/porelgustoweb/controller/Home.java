@@ -32,5 +32,17 @@ public class Home {
         return "singup";
     }
 
+
+    @GetMapping("/catalogo")
+    public String catalogo(Model model) {
+        model.addAttribute("titulo", "Catalogo");
+        return "catalogo";
+    }
+
+     @GetMapping("/carrito")
+    public String carrito(Model model) {
+        model.addAttribute("titulo", "Carrito");
+        return "carrito";
+    }
     
 }
