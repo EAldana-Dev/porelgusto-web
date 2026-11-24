@@ -1,4 +1,4 @@
-package com.neksbyte.porelgustoweb.config;
+package com.neksbyte.porelgustoweb.controller.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
