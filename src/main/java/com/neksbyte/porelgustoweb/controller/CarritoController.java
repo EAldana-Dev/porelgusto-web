@@ -22,7 +22,7 @@ public class CarritoController {
         this.arregloDao = arregloDao;
     }
 
-    @GetMapping("/carrito")
+    @GetMapping("/MiCarrito")
     public String carrito(Model model) {
 
         // por ahora se usa el carrito 1 porque todavia no hay sesion del usuario
@@ -56,5 +56,9 @@ public class CarritoController {
     public String compra(Model model) {
         model.addAttribute("titulo", "Compra | Por el Gusto");
         return "compra";
+    }
+        @PostMapping("/MiCarrito/buy")
+    public String procesarCompra(Model model, @RequestParam int productoId){
+        return "redirect:/MiCarrito";
     }
 }
