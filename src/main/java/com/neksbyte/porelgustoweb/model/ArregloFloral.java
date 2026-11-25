@@ -1,5 +1,6 @@
 package com.neksbyte.porelgustoweb.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -35,15 +36,18 @@ public class ArregloFloral {
     private String disponibilidad;
 
     @OneToMany(mappedBy = "arregloFloral")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ListaDeseoArregloFloral> listasDeseo = new ArrayList<>();
 
     @OneToMany(mappedBy = "arregloFloral")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ContenidoCarrito> contenidosCarrito = new ArrayList<>();
 
     @OneToMany(mappedBy = "arregloFloral", fetch = FetchType.EAGER)
     private List<Imagen> imagenes = new ArrayList<>();
 
     @OneToMany(mappedBy = "arregloFloral")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Modificacion> modificaciones = new ArrayList<>();
 
     public Integer getIdArregloFloral() {

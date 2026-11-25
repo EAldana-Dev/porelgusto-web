@@ -1,4 +1,5 @@
 package com.neksbyte.porelgustoweb.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -26,20 +27,25 @@ public class Pedido {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCarritoDeCompra")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private CarritoDeCompra carritoDeCompra;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idMetodosDePago")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private MetodoPago metodoPago;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCupon")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Cupon cupon;
 
     @OneToOne(mappedBy = "pedido", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Ticket ticket;
 
     @OneToOne(mappedBy = "pedido", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Factura factura;
 
     public Pedido() {

@@ -1,4 +1,5 @@
 package com.neksbyte.porelgustoweb.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,10 +18,12 @@ public class ContenidoCarrito {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idCarritoDeCompra")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private CarritoDeCompra carritoDeCompra;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idArregloFloral")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ArregloFloral arregloFloral;
 
     public ContenidoCarrito() {

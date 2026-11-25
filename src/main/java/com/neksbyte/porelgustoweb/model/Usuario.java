@@ -34,18 +34,23 @@ public class Usuario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idTipoUsuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private TipoUsuario tipoUsuario;
 
     @OneToMany(mappedBy = "usuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Contacto> contactos = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<MetodoPago> metodosPago = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ListaDeDeseos> listasDeDeseos = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<CarritoDeCompra> carritosDeCompra = new ArrayList<>();
 
     public Usuario() {

@@ -1,7 +1,7 @@
 Create database porElGusto;
 use porElGusto;
 CREATE TABLE TipoUsuario (
-  idTipoUsuario INT PRIMARY KEY,
+  idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
   rol VARCHAR(100)
 );
 
@@ -18,7 +18,7 @@ CREATE TABLE Usuario (
 );
 
 CREATE TABLE Contacto (
-  idContacto INT PRIMARY KEY,
+  idContacto INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   tipoContacto VARCHAR(100),
   idUsuario INT,
@@ -26,7 +26,7 @@ CREATE TABLE Contacto (
 );
 
 CREATE TABLE MetodoPago (
-  idMetodosDePago INT PRIMARY KEY,
+  idMetodosDePago INT PRIMARY KEY AUTO_INCREMENT,
   tipoPago VARCHAR(100),
   descripcion VARCHAR(255),
   idUsuario INT,
@@ -34,14 +34,14 @@ CREATE TABLE MetodoPago (
 );
 
 CREATE TABLE ListaDeDeseos (
-  idLista INT PRIMARY KEY,
+  idLista INT PRIMARY KEY AUTO_INCREMENT,
   fechaCreacion DATE,
   idUsuario INT,
   FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
 CREATE TABLE ArregloFloral (
-  idArregloFloral INT PRIMARY KEY,
+  idArregloFloral INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   detalles VARCHAR(255),
   costo DECIMAL(10,2),
@@ -60,7 +60,7 @@ CREATE TABLE ListaDeseo_ArregloFloral (
 );
 
 CREATE TABLE CarritoDeCompra (
-  idCarritoDeCompra INT PRIMARY KEY,
+  idCarritoDeCompra INT PRIMARY KEY AUTO_INCREMENT,
   fecha DATE,
   total DECIMAL(10,2),
   idUsuario INT,
@@ -68,7 +68,7 @@ CREATE TABLE CarritoDeCompra (
 );
 
 CREATE TABLE ContenidoCarrito (
-  idContenido INT PRIMARY KEY,
+  idContenido INT PRIMARY KEY AUTO_INCREMENT,
   cantidad INT,
   precioUnitario DECIMAL(10,2),
   idCarritoDeCompra INT,
@@ -78,7 +78,7 @@ CREATE TABLE ContenidoCarrito (
 );
 
 CREATE TABLE Cupon (
-  idCupon INT PRIMARY KEY,
+  idCupon INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   codigo VARCHAR(100),
   fechaVencimiento DATE,
@@ -88,7 +88,7 @@ CREATE TABLE Cupon (
 );
 
 CREATE TABLE Pedido (
-  idPedido INT PRIMARY KEY,
+  idPedido INT PRIMARY KEY AUTO_INCREMENT,
   fechaCreacion DATE,
   estadoEnvio VARCHAR(100),
   direccionEntrega VARCHAR(255),
@@ -103,7 +103,7 @@ CREATE TABLE Pedido (
 );
 
 CREATE TABLE Ticket (
-  idTicket INT PRIMARY KEY,
+  idTicket INT PRIMARY KEY AUTO_INCREMENT,
   folioVenta VARCHAR(100),
   fecha DATE,
   hora TIME,
@@ -113,7 +113,7 @@ CREATE TABLE Ticket (
 );
 
 CREATE TABLE Factura (
-  idFactura INT PRIMARY KEY,
+  idFactura INT PRIMARY KEY AUTO_INCREMENT,
   RFC VARCHAR(20),
   razonSocial VARCHAR(150),
   direccionFiscal VARCHAR(255),
@@ -125,7 +125,7 @@ CREATE TABLE Factura (
 );
 
 CREATE TABLE Imagen (
-  idImagen INT PRIMARY KEY,
+  idImagen INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   direccionImg VARCHAR(255),
   idArregloFloral INT,
@@ -133,7 +133,7 @@ CREATE TABLE Imagen (
 );
 
 CREATE TABLE Modificacion (
-  idModificacion INT PRIMARY KEY,
+  idModificacion INT PRIMARY KEY AUTO_INCREMENT,
   nombre VARCHAR(150),
   descripcion VARCHAR(255),
   idCosto INT,

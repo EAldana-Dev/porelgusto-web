@@ -1,4 +1,5 @@
 package com.neksbyte.porelgustoweb.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,9 +17,11 @@ public class ListaDeDeseos {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Usuario usuario;
 
     @OneToMany(mappedBy = "listaDeDeseos")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ListaDeseoArregloFloral> arreglos = new ArrayList<>();
 
     public ListaDeDeseos() {
