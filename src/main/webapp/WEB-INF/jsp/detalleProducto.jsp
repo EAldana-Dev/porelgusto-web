@@ -14,6 +14,9 @@
     <h2>$${producto.costo}</h2>
     <p>${producto.detalles}</p>
 
+    <br>
+    <a href="${urlProducto}/QR">ir a codigo</a>
+    <br>
     <form action="${pageContext.request.contextPath}/MiCarrito/buy" method="POST">
         <input type="hidden" name="productoId" value="${producto.idArregloFloral}" />
 
