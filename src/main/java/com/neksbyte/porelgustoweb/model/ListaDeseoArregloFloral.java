@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import jakarta.persistence.Column;
 
 @Entity
 @Table(name = "ListaDeseo_ArregloFloral")
@@ -27,6 +28,13 @@ public class ListaDeseoArregloFloral {
     @JoinColumn(name = "idArregloFloral")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ArregloFloral arregloFloral;
+
+    /** Ya se avisó al cliente que el producto volvió a estar disponible. */
+    @Column(name = "avisado")
+    private Boolean avisado;
+
+    @Column(name = "fechaAgregado")
+    private java.time.LocalDateTime fechaAgregado;
 
     public ListaDeseoArregloFloral() {
     }
@@ -54,4 +62,9 @@ public class ListaDeseoArregloFloral {
     public void setArregloFloral(ArregloFloral arregloFloral) {
         this.arregloFloral = arregloFloral;
     }
+
+    public boolean isAvisado() { return avisado != null && avisado; }
+    public void setAvisado(Boolean avisado) { this.avisado = avisado; }
+    public java.time.LocalDateTime getFechaAgregado() { return fechaAgregado; }
+    public void setFechaAgregado(java.time.LocalDateTime fechaAgregado) { this.fechaAgregado = fechaAgregado; }
 }

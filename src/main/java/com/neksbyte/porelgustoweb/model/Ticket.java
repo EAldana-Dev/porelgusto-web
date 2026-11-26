@@ -9,6 +9,7 @@ import java.time.LocalTime;
 @Table(name = "Ticket")
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTicket")
     private Integer idTicket;
 

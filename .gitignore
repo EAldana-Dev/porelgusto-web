@@ -32,3 +32,8 @@ Thumbs.db
 
 # OpenWiki local de este repositorio
 /openwiki/
+# Imágenes subidas desde el panel (app.uploads.dir)
+uploads/
+
+# Base de ubicaciones por IP (se descarga con scripts/descargar-geoip.sh)
+geoip/

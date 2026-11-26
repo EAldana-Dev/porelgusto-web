@@ -4,6 +4,8 @@ import com.neksbyte.porelgustoweb.dao.ArregloFloralDao;
 import com.neksbyte.porelgustoweb.model.ArregloFloral;
 import com.neksbyte.porelgustoweb.repository.ArregloFloralRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+
 
 import java.util.Optional;
 
@@ -20,5 +22,15 @@ public class ArregloFloralDaoImpl extends BaseDaoImpl<ArregloFloral, Integer> im
     @Override
     public Optional<ArregloFloral> findByNombre(String nombreReal) {
         return repository.findByNombre(nombreReal);
+    }
+
+    @Override
+    public Optional<ArregloFloral> findBySku(String sku) {
+        return repository.findBySku(sku);
+    }
+
+    @Override
+    public List<ArregloFloral> findAllRecientes() {
+        return repository.findAllByOrderByIdArregloFloralDesc();
     }
 }

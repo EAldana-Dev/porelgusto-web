@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="https://jakarta.ee/xml/ns/jakartaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-jsptaglibrary_3_0.xsd"
+        version="3.0">
+    <description>Funciones de formato de Por el Gusto</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>pg</short-name>
+    <uri>https://porelgusto.mx/funciones</uri>
+    <function><name>dinero</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String dinero(java.math.BigDecimal)</function-signature></function>
+    <function><name>fecha</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String fecha(java.lang.Object)</function-signature></function>
+    <function><name>fechaLarga</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String fechaLarga(java.lang.Object)</function-signature></function>
+    <function><name>fechaHora</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String fechaHora(java.time.LocalDateTime)</function-signature></function>
+    <function><name>iso</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String iso(java.lang.Object)</function-signature></function>
+    <function><name>hace</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String hace(java.time.LocalDateTime)</function-signature></function>
+    <function><name>url</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>java.lang.String url(java.lang.String)</function-signature></function>
+    <function><name>contiene</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>boolean contiene(java.util.Collection, java.lang.Object)</function-signature></function>
+    <function><name>esHoy</name><function-class>com.neksbyte.porelgustoweb.config.Formatos</function-class><function-signature>boolean esHoy(java.time.LocalDate)</function-signature></function>
+</taglib>

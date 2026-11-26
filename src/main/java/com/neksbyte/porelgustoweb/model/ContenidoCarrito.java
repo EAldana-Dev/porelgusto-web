@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 @Table(name = "ContenidoCarrito")
 public class ContenidoCarrito {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idContenido")
     private Integer idContenido;
 
@@ -25,6 +26,13 @@ public class ContenidoCarrito {
     @JoinColumn(name = "idArregloFloral")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private ArregloFloral arregloFloral;
+
+    // ---------- Personalización elegida en la tienda ----------
+    @Column(name = "personalizacion", length = 500)
+    private String personalizacion;
+
+    @Column(name = "nota", length = 300)
+    private String nota;
 
     public ContenidoCarrito() {
     }
@@ -69,4 +77,14 @@ public class ContenidoCarrito {
         this.arregloFloral = arregloFloral;
     }
 
+    /** precioUnitario × cantidad. */
+    public BigDecimal getSubtotal() {
+        if (precioUnitario == null || cantidad == null) return BigDecimal.ZERO;
+        return precioUnitario.multiply(BigDecimal.valueOf(cantidad));
+    }
+
+    public String getPersonalizacion() { return personalizacion; }
+    public void setPersonalizacion(String personalizacion) { this.personalizacion = personalizacion; }
+    public String getNota() { return nota; }
+    public void setNota(String nota) { this.nota = nota; }
 }

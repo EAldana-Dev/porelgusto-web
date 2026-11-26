@@ -25,8 +25,12 @@ import java.util.Map;
 @Service
 public class QrCodeService {
 
-    private static final String URL_LOGO_POR_DEFECTO =
-        "https://static.wixstatic.com/media/1e29ba_ba03290225344134b5fbf298417327b0~mv2.png/v1/crop/x_2,y_0,w_284,h_284/fill/w_210,h_210,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/lol.png";
+    /** Logo de la tienda (dentro del proyecto, así no depende de internet). */
+    private static final String URL_LOGO_POR_DEFECTO = "classpath:static/imagenes/logo.png";
+
+    /** Color ciruela de la marca para los módulos del QR. */
+    private static final int COLOR_QR = 0xFF5E3547;
+    private static final int COLOR_FONDO = 0xFFFFFFFF;
 
     private static final String FORMATO_IMAGEN = "PNG";
     private static final String CODIFICACION_TEXTO = "UTF-8";
@@ -43,6 +47,16 @@ public class QrCodeService {
 
     public byte[] generarPngBytesSinLogo(String contenido, int ancho, int alto) throws WriterException, IOException {
         return generarPngBytesConLogo(contenido, ancho, alto, null);
+    }
+
+    /** QR cuadrado con el logo al centro (dedicatorias, productos y generador del panel). */
+    public byte[] png(String contenido, int tamano) {
+        int lado = Math.max(120, Math.min(tamano, 1000));
+        try {
+            return generarPngBytes(contenido, lado, lado);
+        } catch (WriterException | IOException e) {
+            throw new IllegalStateException("No se pudo generar el código QR", e);
+        }
     }
 
     public String generarBase64(String contenido, int ancho, int alto) throws WriterException, IOException {
@@ -70,7 +84,8 @@ public class QrCodeService {
         Map<EncodeHintType, Object> opciones = crearOpcionesQr();
         BitMatrix bitMatrix = qrCodeWriter.encode(contenido, BarcodeFormat.QR_CODE, ancho, alto, opciones);
 
-        BufferedImage qrBinario = MatrixToImageWriter.toBufferedImage(bitMatrix);
+        BufferedImage qrBinario = MatrixToImageWriter.toBufferedImage(bitMatrix,
+            new com.google.zxing.client.j2se.MatrixToImageConfig(COLOR_QR, COLOR_FONDO));
         BufferedImage qrArgb = new BufferedImage(
             qrBinario.getWidth(),
             qrBinario.getHeight(),
@@ -98,6 +113,13 @@ public class QrCodeService {
     private BufferedImage descargarLogo(String urlLogo) {
         if (urlLogo == null || urlLogo.isBlank()) {
             return null;
+        }
+        if (urlLogo.startsWith("classpath:")) {
+            try (InputStream stream = new org.springframework.core.io.ClassPathResource(urlLogo.substring(10)).getInputStream()) {
+                return ImageIO.read(stream);
+            } catch (IOException e) {
+                return null;
+            }
         }
         try {
             URLConnection conexion = URI.create(urlLogo).toURL().openConnection();

@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "MetodoPago")
 public class MetodoPago {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idMetodosDePago")
     private Integer idMetodosDePago;
 

@@ -1,0 +1,19 @@
+-- Solo perfil h2: después de cargar data.sql con ids fijos, los contadores autoincrementables
+-- siguen desde 1000 para que los registros nuevos no choquen con los de ejemplo.
+ALTER TABLE ArregloFloral ALTER COLUMN idArregloFloral RESTART WITH 1000;
+ALTER TABLE CarritoDeCompra ALTER COLUMN idCarritoDeCompra RESTART WITH 1000;
+ALTER TABLE Categoria ALTER COLUMN idCategoria RESTART WITH 1000;
+ALTER TABLE Contacto ALTER COLUMN idContacto RESTART WITH 1000;
+ALTER TABLE ContenidoCarrito ALTER COLUMN idContenido RESTART WITH 1000;
+ALTER TABLE Cupon ALTER COLUMN idCupon RESTART WITH 1000;
+ALTER TABLE Factura ALTER COLUMN idFactura RESTART WITH 1000;
+ALTER TABLE HistorialPedido ALTER COLUMN idHistorial RESTART WITH 1000;
+ALTER TABLE Imagen ALTER COLUMN idImagen RESTART WITH 1000;
+ALTER TABLE ListaDeDeseos ALTER COLUMN idLista RESTART WITH 1000;
+ALTER TABLE MetodoPago ALTER COLUMN idMetodosDePago RESTART WITH 1000;
+ALTER TABLE Modificacion ALTER COLUMN idModificacion RESTART WITH 1000;
+ALTER TABLE Notificacion ALTER COLUMN idNotificacion RESTART WITH 1000;
+ALTER TABLE Pedido ALTER COLUMN idPedido RESTART WITH 1000;
+ALTER TABLE Promocion ALTER COLUMN idPromocion RESTART WITH 1000;
+ALTER TABLE Ticket ALTER COLUMN idTicket RESTART WITH 1000;
+ALTER TABLE Usuario ALTER COLUMN idUsuario RESTART WITH 1000;

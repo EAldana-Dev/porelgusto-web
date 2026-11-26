@@ -9,6 +9,7 @@ import java.util.List;
 @Table(name = "ListaDeDeseos")
 public class ListaDeDeseos {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idLista")
     private Integer idLista;
 

@@ -63,6 +63,12 @@
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- H2 en memoria: solo para el perfil "h2" (probar sin instalar MySQL) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
 		<!-- Bootstrap servido como WebJar: /webjars/bootstrap/css/bootstrap.min.css -->
 		<dependency>
@@ -94,17 +100,35 @@
 			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.5.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.5.3</version>
-        </dependency>
-    </dependencies>
+		<!-- Documentación de la API JSON con Swagger (OpenAPI): /swagger-ui.html, solo administradores -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		<!-- Envío de correos por SMTP (avisos de pedidos, códigos para recuperar la contraseña) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<!-- Lectura de la base de ubicaciones por IP (archivo .mmdb de DB-IP, sin API externa) -->
+		<dependency>
+			<groupId>com.maxmind.db</groupId>
+			<artifactId>maxmind-db</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<!-- Códigos QR (dedicatorias, productos y generador del panel) -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

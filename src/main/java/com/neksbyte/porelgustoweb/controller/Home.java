@@ -1,62 +1,55 @@
 package com.neksbyte.porelgustoweb.controller;
 
-import com.neksbyte.porelgustoweb.dao.ArregloFloralDao;
-import com.neksbyte.porelgustoweb.model.ArregloFloral;
+import com.neksbyte.porelgustoweb.dto.FiltroCatalogo;
+import com.neksbyte.porelgustoweb.dto.ProductoVista;
+import com.neksbyte.porelgustoweb.model.Promocion;
+import com.neksbyte.porelgustoweb.service.ArregloFloralService;
+import com.neksbyte.porelgustoweb.service.PromocionService;
+import com.neksbyte.porelgustoweb.service.RecomendacionService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Comparator;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+/** Página principal: oferta destacada, más vendidos, recomendaciones, colecciones y categorías. */
 @Controller
 public class Home {
-    private final ArregloFloralDao arreglos;
+    private final RecomendacionService recomendaciones;
+    private final ArregloFloralService catalogo;
+    private final PromocionService promociones;
 
-    public Home(ArregloFloralDao arreglos) {
-        this.arreglos = arreglos;
+    public Home(RecomendacionService recomendaciones, ArregloFloralService catalogo, PromocionService promociones) {
+        this.recomendaciones = recomendaciones;
+        this.catalogo = catalogo;
+        this.promociones = promociones;
     }
 
     @GetMapping("/")
-    public String redirigirInicio() {
-        return "redirect:/home";
-    }
-
-    @GetMapping("/home")
-    public String inicio(Model model) {
+    public String inicio(HttpServletRequest req, Model model) {
+        boolean personalizado = Preferencias.aceptadas(req) && !Preferencias.categorias(req).isEmpty();
         model.addAttribute("titulo", "Inicio");
-        List<ArregloFloral> temporada = arreglos.findAll().stream()
-                .sorted(Comparator.comparing(ArregloFloral::getIdArregloFloral))
-                .limit(6)
-                .toList();
-        model.addAttribute("temporada", temporada);
+        model.addAttribute("recomendados", recomendaciones.recomendar(Preferencias.categorias(req), Preferencias.vistos(req), 8));
+        model.addAttribute("personalizado", personalizado);
+        model.addAttribute("masVendidos", recomendaciones.masVendidos(3));
+        model.addAttribute("colecciones", catalogo.colecciones());
+        Promocion destacada = promociones.vigentes().stream().findFirst().orElse(null);
+        model.addAttribute("ofertaDestacada", destacada);
+        // Portada de cada categoría y colección: la foto de su primer producto disponible.
+        Map<String, String> portadas = new LinkedHashMap<>();
+        for (ProductoVista v : catalogo.buscar(new FiltroCatalogo())) {
+            portadas.putIfAbsent(v.getProducto().getCategoriaSlug(), v.getProducto().getImagenUrl());
+            v.getProducto().getColecciones().forEach(c -> portadas.putIfAbsent("col-" + c.getSlug(), v.getProducto().getImagenUrl()));
+        }
+        model.addAttribute("portadas", portadas);
         return "index";
     }
 
-    
-    @GetMapping("/login")
-    public String secion(Model model) {
-        model.addAttribute("titulo", "Inicio");
-        return "secion";
+    /** Ruta anterior de la página de inicio. */
+    @GetMapping("/home")
+    public String redirigirInicio() {
+        return "redirect:/";
     }
-
-    @GetMapping("/signup")
-    public String crearCuenta(Model model) {
-        model.addAttribute("titulo", "Crear cuenta");
-        return "singup";
-    }
-
-
-    @GetMapping("/catalogo")
-    public String catalogo(Model model) {
-        model.addAttribute("titulo", "Catalogo");
-        return "catalogo";
-    }
-
-     @GetMapping("/carrito")
-    public String carrito(Model model) {
-        model.addAttribute("titulo", "Carrito");
-        return "carrito";
-    }
-    
 }
